@@ -4,7 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const fss = require('fs')
 const app = express()
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -88,11 +88,11 @@ app.post('/', (req,res) => {
       var myReadStream = fss.createReadStream(__dirname + '/results/GA.txt', 'utf8')
       myReadStream.pipe(res)
     })
-    server.listen(3000, "127.0.0.1")
+    server.listen(PORT, "127.0.0.1")
     res.json({status: "Success"})
   }
   start()
 
 })
-app.listen(3000)
+app.listen(PORT)
 
